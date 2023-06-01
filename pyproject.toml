@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "logavu"
 dynamic = ["version"]
-description = ''
+description = 'Log Analyzer and Visualizer'
 readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
@@ -24,15 +24,23 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
-    "loguru ==0.7.0",
-    "python-dotenv ==1.0.0",
-    "attacus ==0.1.3"
+    "loguru ~=0.7.0",
+    "python-dotenv ~=1.0.0",
+    "attacus ==0.1.5",
+    "click ~=8.1.3"
 ]
+
+[project.scripts]
+logavu = 'logavu.cli:cli'
 
 [project.urls]
 Documentation = "https://github.com/crungelab/logavu#readme"
 Issues = "https://github.com/crungelab/logavu/issues"
 Source = "https://github.com/crungelab/logavu"
+
+
+[tool.hatch.build]
+ignore-vcs = true
 
 [tool.hatch.version]
 path = "logavu/__about__.py"
@@ -158,3 +166,6 @@ exclude_lines = [
   "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
+
+[tool.attacus]
+flutter_assets = "logavu/flutter_assets"

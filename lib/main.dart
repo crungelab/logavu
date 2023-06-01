@@ -30,7 +30,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<ChatMessage> _messages = [];
+  final List<LogMessage> _messages = [];
+  bool isRecording = false;
   MethodChannel platform = const MethodChannel('logavu');
 
   @override
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         case 'on_message':
           setState(() {
             var text = call.arguments;
-            _messages.add(ChatMessage(text: text));
+            _messages.add(LogMessage(text: text));
           });
           break;
       }
@@ -84,10 +85,18 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               IconButton(
+                icon: Icon(isRecording ? Icons.pause : Icons.record_voice_over),
+                onPressed: () {
+                  setState(() {
+                    isRecording = !isRecording;
+                  });
+                },
+              ),
+              IconButton(
                 icon: const Icon(Icons.add_comment),
                 onPressed: () {
                   setState(() {
-                    //logs.add('New Log Message');
+                    _messages.add(LogMessage(text: 'Test Log Message'));
                   });
                 },
               ),
@@ -95,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: const Icon(Icons.delete),
                 onPressed: () {
                   setState(() {
-                    //logs.clear();
+                    _messages.clear();
                   });
                 },
               ),
@@ -107,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class ChatMessage {
+class LogMessage {
   String text;
-  ChatMessage({required this.text});
+  LogMessage({required this.text});
 }

@@ -2,6 +2,33 @@
 
 Log Analyzer and Visualizer
 
+[![PyPI - Version](https://img.shields.io/pypi/v/logavu.svg)](https://pypi.org/project/logavu)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/logavu.svg)](https://pypi.org/project/logavu)
+
+-----
+
+**Table of Contents**
+
+- [LogaVu](#logavu)
+  - [Installation](#installation)
+  - [Commands](#commands)
+  - [Usage](#usage)
+  - [License](#license)
+
+## Installation
+
+```console
+pip install logavu
+```
+or
+```console
+pipx install logavu
+```
+
+## Commands
+```console
+logavu
+```
 
 ## Usage
 Here is an example using [loguru](https://github.com/Delgan/loguru)
@@ -22,3 +49,7 @@ def logudp(message: str):
 logger.add(logudp)
 
 ```
+
+## License
+
+`logavu` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
